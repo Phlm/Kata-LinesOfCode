@@ -1,4 +1,4 @@
-/*"String in Kommentar 1"
+/* 10 Zeilen, davon 5 Codezeilen: "String in Kommentar 1"
 */
 
 1 AA /*Kommentar /*Kommentar2*/ */aa"

@@ -9,7 +9,7 @@ namespace Kata_LOC.Tests
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void AcceptanceTest2_Phil1()
         {
             //Arrange
             var codeAsString = ReadCodeFromStandardFile();

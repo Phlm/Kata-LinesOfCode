@@ -4,7 +4,7 @@ namespace Kata_LOC
 {
     public class CodeAsLines
     {
-        public string[] Lines { get; }
+        public string[] Lines { get; set; }
 
         public CodeAsLines(string code)
         {

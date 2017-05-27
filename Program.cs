@@ -33,16 +33,23 @@ namespace Kata_LOC
 
         public static int CountLoc(string originalCodeAsString)
         {
-            var codeAsLines = RemoveCommentsFromCode(originalCodeAsString);
+            var codeAsLines = EliminateCommentsFromCode(originalCodeAsString);
             return codeAsLines.CountNonWhiteSpaceLines();
         }
 
-        static CodeAsLines RemoveCommentsFromCode(string originalCodeAsString)
+        static CodeAsLines EliminateCommentsFromCode(string originalCodeAsString)
         {
-            string code = CodeTransforms.EliminateMultiLineComments(originalCodeAsString);
-            var codeLines = new CodeAsLines(code);
+            var codeLines = new CodeAsLines(originalCodeAsString);
             Debug.Assert(codeLines != null);
-            var codeLinesAfterFilter= CodeTransforms.EliminateSingleLineComments(codeLines);
+
+            // var activeOuterElement = enum
+            foreach (var line in codeLines.Lines)
+            {
+                 
+            }
+            //string code = CodeTransforms.EliminateMultiLineComments(originalCodeAsString);
+            
+            //var codeLinesAfterFilter= CodeTransforms.EliminateSingleLineComments(codeLines);
             return codeLines;
         }
     }
