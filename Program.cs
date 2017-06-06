@@ -5,23 +5,26 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Tools.ToolFunctions;
+// using static Kata_LOC.CodeTransforms;
+// ReSharper disable UnnecessaryWhitespace
 
 namespace Kata_LOC
 {
     internal class Program
     {
-     
         static void Main(string[] args)
         {
-            ReadCodeFromStandardFile();
+            var codeAsString = ReadCodeFromFile(@"..\..\Kata-LOC.Tests\Kata_LOC_bsp2.cs");
+            var linesOfCode = CountLoc(codeAsString);
         }
 
-        public static string ReadCodeFromStandardFile()
+        public static string ReadCodeFromFile(string inputFile)
         {
             string codeAsString = "";
             try
             {
-                codeAsString = File.ReadAllText(@"..\..\Kata_LOC_bsp2.cs");
+                codeAsString = File.ReadAllText(inputFile);
             }
             catch (Exception e)
             {
@@ -33,24 +36,8 @@ namespace Kata_LOC
 
         public static int CountLoc(string originalCodeAsString)
         {
-            var codeAsLines = EliminateCommentsFromCode(originalCodeAsString);
-            return codeAsLines.CountNonWhiteSpaceLines();
-        }
-
-        static CodeAsLines EliminateCommentsFromCode(string originalCodeAsString)
-        {
-            var codeLines = new CodeAsLines(originalCodeAsString);
-            Debug.Assert(codeLines != null);
-
-            // var activeOuterElement = enum
-            foreach (var line in codeLines.Lines)
-            {
-                 
-            }
-            //string code = CodeTransforms.EliminateMultiLineComments(originalCodeAsString);
-            
-            //var codeLinesAfterFilter= CodeTransforms.EliminateSingleLineComments(codeLines);
-            return codeLines;
-        }
+            Tokenlist.ScanCodeForTokens(originalCodeAsString);
+            return Tokenlist.CountLinesInTokenList();
+         }
     }
 }
